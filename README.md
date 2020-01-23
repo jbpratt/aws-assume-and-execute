@@ -7,5 +7,5 @@ Loop over a list of accounts, assuming a role into each account, then executing 
 python3 aae.py --role "Admin" --file=accounts.txt --command "./cleanup-default-vpcs.sh"
 
 # or pipe in accounts
-aws organizations list-accounts | jq '.Accounts | .Id' | python3 aae.py --role "Admin" --command "./cleanup-default-vpcs.sh"
+aws organizations list-accounts | jq '.Accounts | .[] | .Id' | python3 aae.py --role "Admin" --command "./cleanup-default-vpcs.sh"
 ```
